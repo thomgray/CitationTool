@@ -86,14 +86,23 @@
 -(NSString*)locString{
     return @"whatever";
 }
--(NSString*)authorsString{
+
+-(NSString *)authorsStringWithFinalDelimiter:(NSString *)delimit{
     NSString* out = @"";
     for (int i = 0; i<authors.count;i++){
         NSString* author = [authors objectAtIndex:i];
         out = [out stringByAppendingFormat:@"%@", author];
         
         if (i==authors.count-1) break;
-        out = [out stringByAppendingString:@", "];
+        else if (i==authors.count-2){
+            if ([Citation isEtAl:[authors objectAtIndex:i+1]] || !delimit) {
+                out = [out stringByAppendingString:@", "];
+            }else{
+                out = [out stringByAppendingString:[NSString stringWithFormat:@" %@ ", delimit]];
+            }
+        }else{
+            out = [out stringByAppendingString:@", "];
+        }
     }
     return out;
 }
@@ -102,11 +111,13 @@
     NSMutableArray* authorCopy = [[NSMutableArray alloc]initWithArray:self.authors copyItems:YES];
     Citation* out = [[Citation alloc]initWithYear:year.year andModifier:year.modifier andAuthors:authorCopy];
     NSMutableArray* locCopy = [[NSMutableArray alloc]init];
-    for (Location* l in self.locations){
+    for (NSInteger i=0; i<locations.count; i++){
+        Location* l = [locations objectAtIndex:i];
         [locCopy addObject:[l copy]];
     }
     NSMutableArray* possRefsCopy = [[NSMutableArray alloc]initWithCapacity:possibleReferences.count];
-    for (Reference* ref in possibleReferences){
+    for (NSInteger i=0; i<possibleReferences.count; i++){
+        Reference* ref = [possibleReferences objectAtIndex:i];
         [possRefsCopy addObject:ref];
     }
     [out setPossibleReferences:possRefsCopy];
@@ -116,8 +127,8 @@
 }
 
 -(NSString*) toString{
-    NSString*out = [self authorsString];
-    out = [out stringByAppendingFormat:@" %@", [self yearString]];
+    NSString*out = [self authorsStringWithFinalDelimiter:@"and"];
+    out = [out stringByAppendingFormat:@" (%@)", [self yearString]];
     return out;
 }
 
@@ -145,16 +156,56 @@
 -(void)findPossibleReferences:(NSArray<Reference*> *)refs{
     if (!possibleReferences) possibleReferences = [[NSMutableArray alloc]init];
     [possibleReferences removeAllObjects];
-    for (Reference* ref in refs){
+    for (NSInteger i=0; i<refs.count; i++){
+        Reference* ref = [refs objectAtIndex:i];
         if ([ref matchesCitation:self]){
             [possibleReferences addObject:ref];
         }
     }
-    for (Reference* ref in possibleReferences){
+    for (NSInteger i=0; i<possibleReferences.count; i++){
+        Reference* ref = [possibleReferences objectAtIndex:i];
         if ([ref isEqualToReference:reference]) return;
     }
     reference=nil;
 }
+
++(BOOL)isEtAl:(NSString *)str{
+    str = [[str lowercaseString] stringByTrimmingCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@"."]];
+    return [str isEqualToString:@"et al"] || [str isEqualToString:@"etal"] || [str isEqualToString:@"et-al"] || [str isEqualToString:@"et. al"] || [str isEqualToString:@"et.-al"] || [str isEqualToString:@"et.al"];
+}
+
+
+#pragma mark Range Management
+
++(void)adjustLocationsForCitations:(NSArray<Citation *> *)citations atIndex:(NSInteger)i byOffset:(NSInteger)off inclusively:(BOOL)inc{
+    for (NSInteger k=0; k<citations.count; k++){
+        Citation* cit = [citations objectAtIndex:k];
+        for (NSInteger l=0; l<cit.locations.count ; l++) {
+            Location* loc = [cit.locations objectAtIndex:l];
+            NSMutableArray<NSValue*>* newRanges = [[NSMutableArray alloc]initWithCapacity:loc.authorRangesInSource.count];
+            for (NSInteger i=0; i<loc.authorRangesInSource.count; i++) {
+                NSRange rng = [loc.authorRangesInSource objectAtIndex:i].rangeValue;
+                if (rng.location>= inc? i:i+1) {
+                    rng = NSMakeRange(rng.location+off, rng.length);
+                }
+                [newRanges addObject:[NSValue valueWithRange:rng]];
+            }
+            [loc setAuthorRangesInSource:newRanges];
+            if ([loc yearRangeInSource].location >= inc? i:i+1) {
+                [loc setYearRangeInSource:NSMakeRange(loc.yearRangeInSource.location+off, loc.yearRangeInSource.length)];
+            }
+        }
+    }
+}
+
+
+
+
+
+
+
+
+
 
 
 @end

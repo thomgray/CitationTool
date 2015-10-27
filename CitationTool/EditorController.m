@@ -10,20 +10,18 @@
 #import "BibFormatSpecialist.h"
 #import "ReferenceRow.h"
 #import "CustomRow.h"
+#import "AppDelegate.h"
 
 @interface EditorController (){
     NSIndexSet * recentlyAddedAuthorIndex;
     BOOL ignoreAction;
 }
 
-//- (void)setupWindowForEvents;
 -(void)addCitationToCopyList:(Citation*)cit;
 -(void)refreshSheet;
 -(void) refreshAndReorderCopyList;
 -(NSMutableArray*) removeLocationsFromLocationTable:(NSIndexSet *)selectedRows withAnimation:(NSTableViewAnimationOptions)animation;
 -(BOOL)reference:(Reference*)ref isTakenByCitationOtherThan:(Citation*)cit;
--(void)cascadeRangesFrom:(Location*)loc by:(NSInteger)offset;
--(NSMutableArray*)getLocationsInOrder;
 -(void)editedAuthor:(id)sender;
 -(void)editedDate:(id)sender;
 
@@ -39,10 +37,14 @@
 @synthesize model;
 @synthesize bibliographies;
 @synthesize references;
+@synthesize sourceCopy;
+@synthesize sourceEditor;
+@synthesize defaultBibIndexForRefEntryPanel;
 
 - (instancetype)init{
     self = [self initWithWindowNibName:@"CitationEditorPanel"];
     return self;
+    dynamicEditing = TRUE;
 }
 
 -(instancetype)initWithCitations:(NSMutableArray*)citations startingAt:(NSInteger)idx{
@@ -51,8 +53,11 @@
         [self setCiteList:citations];
         index = idx;
     }
-    
     return self;
+}
+
+-(void)runModal{
+    [NSApp runModalForWindow:self.window];
 }
 
 -(void)windowDidLoad{
@@ -73,11 +78,17 @@
 -(void) setCiteList:(NSMutableArray *)ctlst{
     citeList = ctlst;
     citeListCopy = [[NSMutableArray alloc]initWithCapacity:citeList.count];
-    for (Citation * cit in citeList){
+    for (NSInteger i=0; i<citeList.count; i++){
+        Citation * cit = [citeList objectAtIndex:i];
         [citeListCopy addObject:[cit copy]];
     }
 }
 
+
+-(void)setSourceCopy:(NSMutableAttributedString *)srcCopy{
+    sourceCopy = srcCopy;
+    sourceEditor = [[SourceEditor alloc]initWithCitations:citeListCopy andSourceString:sourceCopy];
+}
 
 -(void)setCitationAtIndex{
     citation = [citeListCopy objectAtIndex:index];
@@ -87,7 +98,7 @@
         [citeTable setAllowsEmptySelection:TRUE];
         [citeTable reloadData];
         Location* l = [citation.locations objectAtIndex:0];
-        [surroundField setAttributedStringValue:l.attributedSurround];
+        [surroundField setAttributedStringValue:[l getSurroundFromSource:sourceCopy]];
         //surroundField.stringValue = l.surround;
     }else{
         [citeTable selectRowIndexes:[[NSIndexSet alloc]initWithIndex:0] byExtendingSelection:NO];
@@ -95,7 +106,7 @@
         [citeTable reloadData];
     }
     yearField.stringValue = citation.yearString;
-    [self.window setTitle:[NSString stringWithFormat:@"%ld/%ld", index, citeListCopy.count]];
+    [self.window setTitle:[NSString stringWithFormat:@"%ld/%ld", index+1, citeListCopy.count]];
 }
 
 #pragma mark TableViewDelegate Methods:
@@ -122,20 +133,20 @@
         NSIndexSet *indexSet = [citeTable selectedRowIndexes];
         NSUInteger i = [indexSet firstIndex];
         if (i==NSUIntegerMax) return;
-        NSMutableAttributedString *field;
+        NSAttributedString *field;
         if (![indexSet containsIndex:0] && citation.locations.count>1 && indexSet.count==1) { //i.e. one of several selected
             Location* loc = [citation.locations objectAtIndex:i-1];
-            field = loc.attributedSurround;
+            field = [loc getSurroundFromSource:sourceCopy];
         }else if (citation.locations.count==1){
-            field = [[citation.locations objectAtIndex:0] attributedSurround];
+            field = [[citation.locations objectAtIndex:0] getSurroundFromSource:sourceCopy];
         }else if ([indexSet containsIndex:0] && citation.locations.count>1){ //the `all' is selected
-            field = [[NSMutableAttributedString alloc]initWithString:@""];
+            field = [[NSAttributedString alloc]initWithString:@""];
         }else if (indexSet.count>1){ //several selected
-            field = [[NSMutableAttributedString alloc]initWithString:@""];
+            field = [[NSAttributedString alloc]initWithString:@""];
         }else{
-            field = [[NSMutableAttributedString alloc]initWithString:@""];
+            field = [[NSAttributedString alloc]initWithString:@""];
         }
-        surroundField.attributedStringValue = field;
+        [surroundField setAttributedStringValue:field];
     }else if (notification.object==referenceList){
         NSInteger selectedIndex = [referenceList selectedRow];
         ReferenceRow* refRow = [referenceList rowViewAtRow:selectedIndex makeIfNecessary:NO];
@@ -164,17 +175,25 @@
     }else if([ident isEqualToString:@"references"]){
         NSTableCellView* out = [tableView makeViewWithIdentifier:ident owner:self];
         Reference* ref = [citation.possibleReferences objectAtIndex:row];
-        NSString* str = [ref toStringTypeTitle];
-        out.textField.stringValue = str;
+        //NSString* str = [ref toStringTypeTitle];
+        NSAttributedString* attributedRef = [ref getReferenceStub];
+        [out.textField setAttributedStringValue:attributedRef];
+        //out.textField.stringValue = str;
         ReferenceRow* thisRow = [tableView rowViewAtRow:row makeIfNecessary:YES];
         if (citation.reference==ref){
             [thisRow setState:1];
-            NSString* path = [NSString stringWithFormat:@"%@/Images/", [[NSBundle mainBundle]resourcePath]] ;
-            NSImage *tick = [[NSImage alloc]initWithContentsOfFile:[path stringByAppendingString:@"tick.png"]];
-            [out.imageView setImage:tick];
+            [out.imageView setImage:[AppDelegate getImageNamed:@"tickBlue_15"]];
             [out.textField setTextColor:[NSColor colorWithCalibratedWhite:0.1 alpha:1]];
+        }else if (citation.possibleReferences.count==1){
+            [out.imageView setImage:[AppDelegate getImageNamed:@"questionBlue_15"]];
+            if ([self reference:ref isTakenByCitationOtherThan:citation]){
+                [thisRow setState:-1];
+                [out.textField setTextColor:[NSColor colorWithCalibratedWhite:0 alpha:.2]];
+            }else{
+                [thisRow setState:0];
+                [out.textField setTextColor:[NSColor colorWithCalibratedWhite:0.1 alpha:1]];
+            }
         }else{
-            
             [out.imageView setImage:nil];
             if ([self reference:ref isTakenByCitationOtherThan:citation]){
                 [thisRow setState:-1];
@@ -195,7 +214,6 @@
         return out;
     }else return [[CustomRow alloc]init];
 }
-
 
 
 #pragma mark Actions
@@ -228,21 +246,15 @@
         
         Citation *newcite = [[Citation alloc]initWithYear:newDate];
         newcite.authors = [citation.authors copy];
-        for (Location* loc in selectedLocations)
-            [loc editYear:newdate];
         newcite.locations = selectedLocations;
         newcite.assured = citation.assured;
+        [sourceEditor editYearForCitation:newcite newValue:newdate dynamically:dynamicEditing];
         [self addCitationToCopyList:newcite];
         
         yearField.stringValue = olddate;
         return;
     }else{
-        for (Location * loc in citation.locations){
-//            if (newdate.length!=olddate.length){
-//                [self cascadeRangesFrom:loc by:newdate.length-olddate.length];
-//            }
-            [loc editYear:newdate];
-        }
+        [sourceEditor editYearForCitation:citation newValue:newdate dynamically:dynamicEditing];
         citation.year = newDate;
         [self refreshAndReorderCopyList];
     }
@@ -251,12 +263,23 @@
 - (IBAction)done:(id)sender {
     citeList = citeListCopy;
     [model updateCitations:citeList];
+    [model updateSource:sourceCopy];
+    [model refreshBibliography];
+    [model setDefaultBibIndex:defaultBibIndexForRefEntryPanel];
+    [NSApp stopModal];
     [self close];
     
 }
 
 - (IBAction)cancel:(id)sender {
+    [model setDefaultBibIndex:defaultBibIndexForRefEntryPanel];
+    [NSApp stopModal];
     [self close];
+}
+
+-(IBAction)dynamiEditingToggle:(id)sender{
+    NSButton* butt = (NSButton*)sender;
+    dynamicEditing = butt.state;
 }
 
 - (IBAction)addAuthor:(id)sender {
@@ -273,14 +296,8 @@
     }
     ignoreAction = YES;
     [authorsTable insertRowsAtIndexes:recentlyAddedAuthorIndex withAnimation:NSTableViewAnimationSlideDown];
-    //[authorsTable selectRowIndexes:indx byExtendingSelection:NO];
     NSTableCellView * cell = (NSTableCellView*)[authorsTable viewAtColumn:0 row:i makeIfNecessary:NO];
     [cell.textField selectText:cell];
-    
-    ////to prevent deleting the new authors for a global edit:
-//    if (citation.locations.count==1 || [[citeTable selectedRowIndexes]containsIndex:0]){ ///add (|| selected rows>=citation.locations)
-//        recentlyAddedAuthorIndex = nil;
-//    }
 }
 
 - (IBAction)removeAuthor:(id)sender {
@@ -290,16 +307,40 @@
     if (citation.locations.count<2 || [selectedCitaitons containsIndex:0] || selectedCitaitons.count>=citation.locations.count-1) {
         [citation.authors removeObjectsAtIndexes:rows];
         [authorsTable removeRowsAtIndexes:rows withAnimation:NSTableViewAnimationSlideLeft];
+
+        NSUInteger idx = rows.lastIndex;
+        if (dynamicEditing) {
+            while (idx!=NSNotFound) {
+                [sourceEditor removeAuthorForCitation:citation atIndex:idx];
+                idx = [rows indexLessThanIndex:idx];
+            }
+        }else{
+            for (NSInteger m=0; m<citation.locations.count; m++) {
+                Location* loc = [citation.locations objectAtIndex:m];
+                [loc.authorRangesInSource removeObjectsAtIndexes:rows];
+            }
+        }
         [self refreshAndReorderCopyList];
     }else{
         Citation* newcite = [[Citation alloc]initWithYear:citation.year.year andModifier:citation.year.modifier];
         NSMutableArray* locations = [NSMutableArray arrayWithArray:[citation.locations objectsAtIndexes:selectedCitaitons]];
         newcite.locations = locations;
         newcite.authors = [NSMutableArray arrayWithArray:citation.authors];
-        for (Location * loc in newcite.locations){
-            [loc removeAuthorAtIndex:rows.firstIndex];
+        [newcite.authors removeObjectsAtIndexes:rows];
+        
+        NSUInteger idx = rows.lastIndex;
+        if (dynamicEditing) {
+            while (idx!=NSNotFound) {
+                [sourceEditor removeAuthorForCitation:newcite atIndex:idx];
+                idx = [rows indexLessThanIndex:idx];
+            }
+        }else{
+            for (NSInteger m=0; m<newcite.locations.count; m++) {
+                Location* loc =[ newcite.locations objectAtIndex:m];
+                [loc.authorRangesInSource removeObjectsAtIndexes:rows];
+            }
         }
-        [newcite.authors removeObjectAtIndex:rows.firstIndex];
+        
         NSTableViewAnimationOptions animation;
         NSComparisonResult comp = [citation compare:newcite];
         if (comp==NSOrderedAscending) {
@@ -323,11 +364,13 @@
     NSString* path = [NSString stringWithFormat:@"%@/nonNames.txt", [[NSBundle mainBundle]resourcePath]];
     NSArray* nonNames = [[NSString stringWithContentsOfFile:path encoding:NSUTF8StringEncoding error:nil] componentsSeparatedByCharactersInSet:[NSCharacterSet newlineCharacterSet]];
     NSMutableArray* ignores = [NSMutableArray arrayWithArray:nonNames];
-    for (NSString* author in unwanted){
+    for (NSInteger m=0; m<unwanted.count; m++){
+        NSString* author = [unwanted objectAtIndex:m];
         if (![ignores containsObject:author]) [ignores addObject:author];
     }
     NSString* output = @"";
-    for (NSString* author in ignores){
+    for (NSInteger m=0; m<ignores.count; m++){
+        NSString* author = [ignores objectAtIndex:m];
         output = [output stringByAppendingFormat:@"%@\n",author];
     }
     [output writeToFile:path atomically:TRUE encoding:NSUTF8StringEncoding error:nil];
@@ -337,7 +380,8 @@
     [citation.authors removeObjectsAtIndexes:rows];
     [authorsTable removeRowsAtIndexes:rows withAnimation:NSTableViewAnimationSlideRight];
     
-    for (Citation * cit in citeListCopy) {
+    for (NSInteger m=0; m<citeListCopy.count; m++) {
+        Citation * cit = [citeListCopy objectAtIndex:m];
         for (int i =0; i<cit.authors.count; i++) {
             NSString* author = [cit.authors objectAtIndex:i];
             if ([unwanted containsObject:author]){
@@ -366,9 +410,7 @@
     NSIndexSet *selectedIndexes = [citeTable selectedRowIndexes];
     
     if ([selectedIndexes containsIndex:0] || citation.locations.count<2 || selectedIndexes.count>=citation.locations.count-1) { //if a global edit
-        for (Location* loc in citation.locations){
-            [loc editAuthor:newAuthor at:i inserting:recentlyAddedAuthorIndex!=nil];
-        }
+        [sourceEditor editAuthorForCitation:citation atIndex:i newAuthor:newAuthor inserting:recentlyAddedAuthorIndex!=nil dynamically:dynamicEditing];
         [self refreshAndReorderCopyList];
         
     }else{
@@ -380,12 +422,10 @@
         //-----------------------
         //--make the new citation
         Citation * newCitation = [[Citation alloc]initWithYear:citation.year.year andModifier:citation.year.modifier];
-        for (Location * loc in selectedLocations){
-            [loc editAuthor:newAuthor at:i inserting:recentlyAddedAuthorIndex!=nil];
-        }
         newCitation.locations = selectedLocations;
         newCitation.assured = citation.assured;
         newCitation.authors = [NSMutableArray arrayWithArray:citation.authors];
+        [sourceEditor editAuthorForCitation:newCitation atIndex:i newAuthor:newAuthor inserting:recentlyAddedAuthorIndex!=nil dynamically:dynamicEditing];
         //-----------------------
         if (recentlyAddedAuthorIndex){
             [citation.authors removeObjectsAtIndexes:recentlyAddedAuthorIndex];
@@ -400,6 +440,14 @@
         [self addCitationToCopyList:newCitation];
     }
     recentlyAddedAuthorIndex = nil;
+}
+
+-(IBAction)forgetReference:(id)sender{
+    [citeListCopy removeObject:citation];
+    if (index>=citeListCopy.count-1) {
+        index--;
+    }
+    [self setCitationAtIndex];
 }
 
 - (IBAction)nextRef:(id)sender {
@@ -434,10 +482,39 @@
     }    
 }
 
+-(void)launchRefEntry:(id)sender{
+    [NSApp stopModal];
+    refEntryPanel = [[ReferenceEntry alloc]initWithWindowNibName:@"ReferenceEntry"];
+    [refEntryPanel setParent:self];
+    [refEntryPanel.window orderWindow:NSWindowAbove relativeTo:[self.window orderedIndex]];
+    [refEntryPanel showWindow:self];
+    [refEntryPanel runModal];
+}
+
+#pragma mark Ref Editor Control
+
+-(void)referenceModalEnded:(BOOL)submitted{
+    [addRefButton setImage:[AppDelegate getImageNamed:@"addIconUp_15"]];
+    if (submitted) {
+        [self refreshPossibleReferences];
+        [referenceList reloadData];
+    }
+    [NSApp runModalForWindow:self.window];
+}
+
+-(void)referenceModelEndedWithRef:(Reference *)ref{
+    [addRefButton setImage:[AppDelegate getImageNamed:@"addIconUp_15"]];
+    [self refreshPossibleReferences];
+    [self refreshSheet];
+    [NSApp runModalForWindow:self.window];
+}
+
+
 #pragma mark Private Methods: Reconfiguring for edits
 
 -(void) addCitationToCopyList:(Citation *)cit{
-    for (Citation * c in citeListCopy){
+    for (NSInteger m=0; m<citeListCopy.count; m++){
+        Citation * c = [citeListCopy objectAtIndex:m];
         if ([c isEquivalent:cit]){
             [c.locations addObjectsFromArray:cit.locations];
             [c.locations sortUsingSelector:@selector(compare:)];
@@ -450,7 +527,7 @@
 }
 
 
-///get it to adjuct the index appropriately as the array changes
+///get it to adjust the index appropriately as the array changes
 -(void) refreshAndReorderCopyList{
     for (int i=0; i<citeListCopy.count; i++) {
         for (int j=i+1; j<citeListCopy.count; j++) {
@@ -482,36 +559,42 @@
     [self setCitationAtIndex];
 }
 
+-(void)refreshPossibleReferences{
+    for (NSInteger i=0; i<citeList.count; i++){
+        Citation* cit =[citeList objectAtIndex:i];
+        [cit findPossibleReferences:references];
+    }
+    for (NSInteger i=0; i<citeListCopy.count; i++) {
+        Citation* cit =[citeListCopy objectAtIndex:i];
+        [cit findPossibleReferences:references];
+    }
+}
+
+-(void)refreshPossibleReferencesAfterAddingReference:(Reference *)ref{
+    for (NSInteger i=0; i<citeList.count; i++) {
+        Citation* cit =[citeList objectAtIndex:i];
+        if ([ref matchesCitation:cit]) {
+            [cit.possibleReferences addObject:ref];
+        }
+    }
+    for (NSInteger i=0; i<citeList.count; i++) {
+        Citation* cit = [citeListCopy objectAtIndex:i];
+        if ([ref matchesCitation:cit]) {
+            [cit.possibleReferences addObject:ref];
+        }
+    }
+    [referenceList reloadData];
+}
+
 -(void) refreshSheet{
-    [citation findPossibleReferences:references];
+    //[citation findPossibleReferences:references];
     [referenceList reloadData];
     [authorsTable reloadData];
     [citeTable reloadData];
     [yearField setStringValue:[citation yearString]];
 }
 
--(void)cascadeRangesFrom:(Location*)l by:(NSInteger)offset{
-    NSMutableArray* locations = [self getLocationsInOrder];
-    BOOL begun=false;
-    for (NSInteger i=0; i<locations.count; i++) {
-        Location* loc = [locations objectAtIndex:i];
-        if ([loc isEqualTo:l]){
-            begun = true;
-            continue;
-        }else if (!begun) continue;
-        
-        [loc offsetRange:offset];
-    }
-}
 
--(NSMutableArray *)getLocationsInOrder{
-    NSMutableArray* out = [[NSMutableArray alloc]init];
-    for (Citation* cit in citeListCopy){
-        [out addObjectsFromArray:cit.locations];
-    }
-    [out sortUsingSelector:@selector(compare:)];
-    return out;
-}
 
 #pragma mark TextFieldDelegate Methods:
 
@@ -524,8 +607,8 @@
     }
 }
 
--(void)controlTextDidChange:(NSNotification *)obj{
-}
+//-(void)controlTextDidChange:(NSNotification *)obj{
+//}
 
 -(BOOL)control:(NSControl *)control textView:(NSTextView *)textView doCommandBySelector:(SEL)commandSelector{
     if (control==(NSControl*)yearField) {
@@ -549,7 +632,7 @@
         [locations addObject:loc];
         i = [selectedRows indexGreaterThanIndex:i];
     }
-    [[NSAnimationContext currentContext] setDuration:2.0];
+    [[NSAnimationContext currentContext] setDuration:3.0];
     [citation.locations removeObjectsInArray:locations];
     [citeTable removeRowsAtIndexes:selectedRows withAnimation:animation];
     if (citation.locations.count==1){
@@ -560,22 +643,36 @@
 }
 
 #pragma mark Split View Delegate Methods:
-//
-//-(CGFloat)splitView:(NSSplitView *)splitView constrainMaxCoordinate:(CGFloat)proposedMaximumPosition ofSubviewAt:(NSInteger)dividerIndex{
-//    if (dividerIndex==1){
-//        NSView* authorView = [splitView.subviews objectAtIndex:0];
-//        return authorView.frame.origin.x+authorView.frame.size.width + 100;
-//    }else return proposedMaximumPosition;
-//}
-//
-//-(CGFloat)splitView:(NSSplitView *)splitView constrainMinCoordinate:(CGFloat)proposedMinimumPosition ofSubviewAt:(NSInteger)dividerIndex{
-//    if (dividerIndex == 1){
-//        NSView* refView = [splitView.subviews objectAtIndex:2];
-//        return refView.frame.origin.x - 100;
-//    }
-//    return proposedMinimumPosition;
-//}
 
+-(CGFloat)splitView:(NSSplitView *)splitView constrainMaxCoordinate:(CGFloat)proposedMaximumPosition ofSubviewAt:(NSInteger)dividerIndex{
+    if ([splitView isVertical]) {
+        CGFloat width = splitView.frame.size.width;
+        return width-300.0f;
+    }else{
+        CGFloat height = splitView.frame.size.height;
+        return height - 50.0f;
+    }
+    return proposedMaximumPosition;
+}
+
+-(CGFloat)splitView:(NSSplitView *)splitView constrainMinCoordinate:(CGFloat)proposedMinimumPosition ofSubviewAt:(NSInteger)dividerIndex{
+    if ([splitView isVertical]) {
+        return 200.0f;
+    }else{
+        return 100.0f;
+    }
+}
+
+-(BOOL)splitView:(NSSplitView *)splitView canCollapseSubview:(NSView *)subview{
+    if ([splitView isVertical]) {
+        
+    }else{
+        if (subview == [splitView.subviews lastObject]) {
+            return YES;
+        }
+    }
+    return false;
+}
 
 -(BOOL)reference:(Reference *)ref isTakenByCitationOtherThan:(Citation *)cit{
     for (NSInteger i=0; i<citeListCopy.count; i++) {

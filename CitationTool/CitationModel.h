@@ -10,7 +10,6 @@
 #import <Cocoa/Cocoa.h>
 #import "Citation.h"
 #import "EditorController.h"
-#import "LocationButton.h"
 #import "PopUpView.h"
 #import "Bibliography.h"
 #import "SourceView.h"
@@ -18,28 +17,32 @@
 @class EditorController;
 
 
-@interface CitationModel : NSObject <NSTableViewDataSource, NSTableViewDelegate, NSTextViewDelegate>{
+@interface CitationModel : NSWindowController <NSTableViewDataSource, NSTableViewDelegate, NSTextViewDelegate>{
     IBOutlet NSTableView* citeTable;
     EditorController* editorController;
     NSMutableArray* citeCountListOns;
-    
-    __unsafe_unretained IBOutlet NSTextField* surroundField;
-    IBOutlet PopUpView *popUpView;
     __unsafe_unretained IBOutlet SourceView *sourceView;
+    __unsafe_unretained IBOutlet NSTextView *bibliographyView;
 }
 
 @property (nonatomic) NSMutableArray * citations;
 @property NSMutableArray* tableData;
 @property NSMutableArray<Reference*>* references;
 @property NSMutableArray<Bibliography*>* bibliographies;
+@property NSInteger defaultBibIndex;
 
 - (IBAction)listClick:(id)sender;
 - (IBAction)advancedButtonClick:(id)sender;
--(IBAction)viewClick:(id)sender;
 
--(void)mouseEntered:(NSButton*)sender;
--(void)mouseExited:(NSButton*)sender;
+-(NSString*)getCitedReferences;
+
+-(void)refreshBibliography;
+-(void)refreshReferences;
 
 -(void)updateCitations:(NSMutableArray*)cits;
+-(void)updateSource:(NSAttributedString*)str;
+
+-(void)saveProgressAtPath:(NSString*)path;
+-(void)openSavedProject:(NSString*)path;
 
 @end

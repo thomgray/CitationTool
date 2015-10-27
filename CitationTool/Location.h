@@ -11,21 +11,30 @@
 
 @interface Location : NSObject
 
-@property (nonatomic) NSString* surround;
-@property NSMutableAttributedString* attributedSurround;
+//@property (nonatomic) NSString* surround;
+//@property NSMutableAttributedString* attributedSurround;
 @property NSRange range;
-@property NSMutableArray<NSValue*>* authorRangesInSurround;
-@property NSRange yearRangeInSurround;
+//@property NSRange surroundRange;
+//@property NSMutableArray<NSValue*>* authorRangesInSurround;
+@property NSMutableArray<NSValue*>* authorRangesInSource;
+//@property NSRange yearRangeInSurround;
+@property NSRange yearRangeInSource;
 
 -(instancetype)initWithRange:(NSRange)rng;
+-(void)addRangeToAuthorSourceArray:(NSRange)rng;
 
--(void)setSurround:(NSString *)surround;
+//-(void)setSurround:(NSString *)surround;
 
 -(NSComparisonResult)compare:(id)in;
 -(void)offsetRange:(NSInteger)offset;
+-(NSMutableArray<NSValue*>*)getAllRangesInSourceInExplicitOrder:(BOOL)order;
 
--(void)editYear:(NSString*)newYear;
--(void)editAuthor:(NSString*)newAuthor at:(NSInteger)index inserting:(BOOL)insert;
--(void)removeAuthorAtIndex:(NSInteger)index;
+//-(void)editYear:(NSString*)newYear;
+//-(void)editAuthor:(NSString*)newAuthor at:(NSInteger)index inserting:(BOOL)insert;
+//-(void)removeAuthorAtIndex:(NSInteger)index;
+
+-(NSAttributedString*)getSurroundFromSource:(NSAttributedString*)source;
+
++(NSComparator)rangeComparator;
 
 @end

@@ -9,6 +9,12 @@
     __unsafe_unretained IBOutlet NSButton *leftArrow;
     __unsafe_unretained IBOutlet NSButton *ignoreButton;
     __unsafe_unretained IBOutlet EditorController *controller;
+    
+    __unsafe_unretained IBOutlet NSButton *addAuthorButton;
+    __unsafe_unretained IBOutlet NSButton *removeAuthorButton;
+    __unsafe_unretained IBOutlet NSButton *forgetAuthorButton;
+    
+    __unsafe_unretained IBOutlet NSButton *addReferenceButton;
 }
 
 

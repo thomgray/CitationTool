@@ -1,0 +1,847 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		C503AC411BCCA16200539FC9 /* CitationsHorizontalList.m in Sources */ = {isa = PBXBuildFile; fileRef = C503AC401BCCA16200539FC9 /* CitationsHorizontalList.m */; settings = {ASSET_TAGS = (); }; };
+		C503AC441BCCA42300539FC9 /* CitationHorizontalListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C503AC431BCCA42300539FC9 /* CitationHorizontalListCell.m */; settings = {ASSET_TAGS = (); }; };
+		C503AC461BCCA99F00539FC9 /* Images in Resources */ = {isa = PBXBuildFile; fileRef = C503AC451BCCA99F00539FC9 /* Images */; };
+		C503AC491BCE057400539FC9 /* CountTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = C503AC481BCE057400539FC9 /* CountTextField.m */; settings = {ASSET_TAGS = (); }; };
+		C5294A0A1BD838D700F16037 /* SourceEditor.m in Sources */ = {isa = PBXBuildFile; fileRef = C5294A091BD838D700F16037 /* SourceEditor.m */; settings = {ASSET_TAGS = (); }; };
+		C5294A381BDDA07000F16037 /* BibListWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = C5294A371BDDA07000F16037 /* BibListWindow.m */; settings = {ASSET_TAGS = (); }; };
+		C5294A3A1BDDA53A00F16037 /* savedInfo.txt in Resources */ = {isa = PBXBuildFile; fileRef = C5294A391BDDA53A00F16037 /* savedInfo.txt */; settings = {ASSET_TAGS = (); }; };
+		C53B915E1BCBF3B000BFBB51 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C53B915D1BCBF3B000BFBB51 /* main.m */; };
+		C53B91601BCBF3B000BFBB51 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C53B915F1BCBF3B000BFBB51 /* Assets.xcassets */; };
+		C53B916E1BCBF3B100BFBB51 /* CitationToolTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C53B916D1BCBF3B100BFBB51 /* CitationToolTests.m */; };
+		C53B91791BCBF3B100BFBB51 /* CitationToolUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = C53B91781BCBF3B100BFBB51 /* CitationToolUITests.m */; };
+		C53B91A31BCBF4B600BFBB51 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C53B91871BCBF4B600BFBB51 /* AppDelegate.m */; settings = {ASSET_TAGS = (); }; };
+		C53B91A51BCBF4B600BFBB51 /* Base.lproj in Resources */ = {isa = PBXBuildFile; fileRef = C53B91891BCBF4B600BFBB51 /* Base.lproj */; settings = {ASSET_TAGS = (); }; };
+		C53B91A61BCBF4B600BFBB51 /* BibFormatSpecialist.m in Sources */ = {isa = PBXBuildFile; fileRef = C53B918B1BCBF4B600BFBB51 /* BibFormatSpecialist.m */; settings = {ASSET_TAGS = (); }; };
+		C53B91A71BCBF4B600BFBB51 /* Bibliography.m in Sources */ = {isa = PBXBuildFile; fileRef = C53B918D1BCBF4B600BFBB51 /* Bibliography.m */; settings = {ASSET_TAGS = (); }; };
+		C53B91A81BCBF4B600BFBB51 /* BibListController.m in Sources */ = {isa = PBXBuildFile; fileRef = C53B918F1BCBF4B600BFBB51 /* BibListController.m */; settings = {ASSET_TAGS = (); }; };
+		C53B91A91BCBF4B600BFBB51 /* BibListController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C53B91901BCBF4B600BFBB51 /* BibListController.xib */; settings = {ASSET_TAGS = (); }; };
+		C53B91AA1BCBF4B600BFBB51 /* CitationEditorPanel.m in Sources */ = {isa = PBXBuildFile; fileRef = C53B91921BCBF4B600BFBB51 /* CitationEditorPanel.m */; settings = {ASSET_TAGS = (); }; };
+		C53B91AC1BCBF4B600BFBB51 /* CitationModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C53B91951BCBF4B600BFBB51 /* CitationModel.m */; settings = {ASSET_TAGS = (); }; };
+		C53B91AE1BCBF4B600BFBB51 /* CountCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = C53B91981BCBF4B600BFBB51 /* CountCellView.m */; settings = {ASSET_TAGS = (); }; };
+		C53B91AF1BCBF4B600BFBB51 /* CustomImageBox.m in Sources */ = {isa = PBXBuildFile; fileRef = C53B919A1BCBF4B600BFBB51 /* CustomImageBox.m */; settings = {ASSET_TAGS = (); }; };
+		C53B91B01BCBF4B600BFBB51 /* CustomRow.m in Sources */ = {isa = PBXBuildFile; fileRef = C53B919C1BCBF4B600BFBB51 /* CustomRow.m */; settings = {ASSET_TAGS = (); }; };
+		C53B91B11BCBF4B600BFBB51 /* EditableCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = C53B919E1BCBF4B600BFBB51 /* EditableCellView.m */; settings = {ASSET_TAGS = (); }; };
+		C53B91B21BCBF4B600BFBB51 /* EditorController.m in Sources */ = {isa = PBXBuildFile; fileRef = C53B91A01BCBF4B600BFBB51 /* EditorController.m */; settings = {ASSET_TAGS = (); }; };
+		C53B91B31BCBF4B600BFBB51 /* FieldCellView.m in Sources */ = {isa = PBXBuildFile; fileRef = C53B91A21BCBF4B600BFBB51 /* FieldCellView.m */; settings = {ASSET_TAGS = (); }; };
+		C53B91B61BCBF51B00BFBB51 /* CitationModel.xib in Resources */ = {isa = PBXBuildFile; fileRef = C53B91B41BCBF51B00BFBB51 /* CitationModel.xib */; settings = {ASSET_TAGS = (); }; };
+		C53B91E11BCBF53200BFBB51 /* MainWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = C53B91C21BCBF53200BFBB51 /* MainWindow.m */; settings = {ASSET_TAGS = (); }; };
+		C53B91E21BCBF53200BFBB51 /* Name.m in Sources */ = {isa = PBXBuildFile; fileRef = C53B91C41BCBF53200BFBB51 /* Name.m */; settings = {ASSET_TAGS = (); }; };
+		C53B91E51BCBF53200BFBB51 /* PopUpView.m in Sources */ = {isa = PBXBuildFile; fileRef = C53B91C81BCBF53200BFBB51 /* PopUpView.m */; settings = {ASSET_TAGS = (); }; };
+		C53B91E61BCBF53200BFBB51 /* PreferencesController.m in Sources */ = {isa = PBXBuildFile; fileRef = C53B91CA1BCBF53200BFBB51 /* PreferencesController.m */; settings = {ASSET_TAGS = (); }; };
+		C53B91E71BCBF53200BFBB51 /* PreferencesWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = C53B91CB1BCBF53200BFBB51 /* PreferencesWindow.xib */; settings = {ASSET_TAGS = (); }; };
+		C53B91E91BCBF53200BFBB51 /* Reference.m in Sources */ = {isa = PBXBuildFile; fileRef = C53B91CE1BCBF53200BFBB51 /* Reference.m */; settings = {ASSET_TAGS = (); }; };
+		C53B91EA1BCBF53200BFBB51 /* ReferenceCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C53B91D01BCBF53200BFBB51 /* ReferenceCell.m */; settings = {ASSET_TAGS = (); }; };
+		C53B91EB1BCBF53200BFBB51 /* ReferenceEntry.m in Sources */ = {isa = PBXBuildFile; fileRef = C53B91D21BCBF53200BFBB51 /* ReferenceEntry.m */; settings = {ASSET_TAGS = (); }; };
+		C53B91EC1BCBF53200BFBB51 /* ReferenceEntry.xib in Resources */ = {isa = PBXBuildFile; fileRef = C53B91D31BCBF53200BFBB51 /* ReferenceEntry.xib */; settings = {ASSET_TAGS = (); }; };
+		C53B91ED1BCBF53200BFBB51 /* ReferenceRow.m in Sources */ = {isa = PBXBuildFile; fileRef = C53B91D51BCBF53200BFBB51 /* ReferenceRow.m */; settings = {ASSET_TAGS = (); }; };
+		C53B91EF1BCBF53200BFBB51 /* SourceView.m in Sources */ = {isa = PBXBuildFile; fileRef = C53B91D81BCBF53200BFBB51 /* SourceView.m */; settings = {ASSET_TAGS = (); }; };
+		C53B91FF1BCBF84E00BFBB51 /* Citation.m in Sources */ = {isa = PBXBuildFile; fileRef = C53B91F21BCBF84E00BFBB51 /* Citation.m */; settings = {ASSET_TAGS = (); }; };
+		C53B92021BCBF84E00BFBB51 /* Location.m in Sources */ = {isa = PBXBuildFile; fileRef = C53B91F81BCBF84E00BFBB51 /* Location.m */; settings = {ASSET_TAGS = (); }; };
+		C53B92031BCBF84E00BFBB51 /* Parser.m in Sources */ = {isa = PBXBuildFile; fileRef = C53B91FA1BCBF84E00BFBB51 /* Parser.m */; settings = {ASSET_TAGS = (); }; };
+		C53B92051BCBF84E00BFBB51 /* Year.m in Sources */ = {isa = PBXBuildFile; fileRef = C53B91FE1BCBF84E00BFBB51 /* Year.m */; settings = {ASSET_TAGS = (); }; };
+		C53B92061BCBFB0600BFBB51 /* CitationEditorPanel.xib in Resources */ = {isa = PBXBuildFile; fileRef = C53B91931BCBF4B600BFBB51 /* CitationEditorPanel.xib */; };
+		C53B92081BCBFB4600BFBB51 /* CitationTool.icns in Resources */ = {isa = PBXBuildFile; fileRef = C53B92071BCBFB4600BFBB51 /* CitationTool.icns */; };
+		C53B92391BCC3D0700BFBB51 /* en_GB-large.txt in Resources */ = {isa = PBXBuildFile; fileRef = C53B92361BCC3D0700BFBB51 /* en_GB-large.txt */; };
+		C53B923A1BCC3D0700BFBB51 /* nonNames.txt in Resources */ = {isa = PBXBuildFile; fileRef = C53B92371BCC3D0700BFBB51 /* nonNames.txt */; };
+		C53B923B1BCC3D0700BFBB51 /* prefixes.txt in Resources */ = {isa = PBXBuildFile; fileRef = C53B92381BCC3D0700BFBB51 /* prefixes.txt */; };
+		C54E61BB1BD14ECC00208F8C /* LaTexCommander.m in Sources */ = {isa = PBXBuildFile; fileRef = C54E61B21BD14ECC00208F8C /* LaTexCommander.m */; settings = {ASSET_TAGS = (); }; };
+		C54E61BC1BD14ECC00208F8C /* LaTeXComponent.m in Sources */ = {isa = PBXBuildFile; fileRef = C54E61B41BD14ECC00208F8C /* LaTeXComponent.m */; settings = {ASSET_TAGS = (); }; };
+		C54E61BD1BD14ECC00208F8C /* LaTeXString.m in Sources */ = {isa = PBXBuildFile; fileRef = C54E61B61BD14ECC00208F8C /* LaTeXString.m */; settings = {ASSET_TAGS = (); }; };
+		C54E61BE1BD14ECC00208F8C /* TeXTranslator.m in Sources */ = {isa = PBXBuildFile; fileRef = C54E61B81BD14ECC00208F8C /* TeXTranslator.m */; settings = {ASSET_TAGS = (); }; };
+		C54E61BF1BD14ECC00208F8C /* UnicodeString.m in Sources */ = {isa = PBXBuildFile; fileRef = C54E61BA1BD14ECC00208F8C /* UnicodeString.m */; settings = {ASSET_TAGS = (); }; };
+		C54E61C31BD1F47D00208F8C /* BibTexTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = C54E61C21BD1F47D00208F8C /* BibTexTextView.m */; settings = {ASSET_TAGS = (); }; };
+		C54E61C61BD24A0200208F8C /* CiteListRow.m in Sources */ = {isa = PBXBuildFile; fileRef = C54E61C51BD24A0200208F8C /* CiteListRow.m */; settings = {ASSET_TAGS = (); }; };
+		C54E61DC1BD4925900208F8C /* StringIterator.m in Sources */ = {isa = PBXBuildFile; fileRef = C54E61DB1BD4925900208F8C /* StringIterator.m */; settings = {ASSET_TAGS = (); }; };
+		C54E61DF1BD4A97800208F8C /* CitationIterator.m in Sources */ = {isa = PBXBuildFile; fileRef = C54E61DE1BD4A97800208F8C /* CitationIterator.m */; settings = {ASSET_TAGS = (); }; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		C53B916A1BCBF3B100BFBB51 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C53B914E1BCBF3B000BFBB51 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C53B91551BCBF3B000BFBB51;
+			remoteInfo = CitationTool;
+		};
+		C53B91751BCBF3B100BFBB51 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C53B914E1BCBF3B000BFBB51 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C53B91551BCBF3B000BFBB51;
+			remoteInfo = CitationTool;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		C503AC3F1BCCA16200539FC9 /* CitationsHorizontalList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CitationsHorizontalList.h; sourceTree = "<group>"; };
+		C503AC401BCCA16200539FC9 /* CitationsHorizontalList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CitationsHorizontalList.m; sourceTree = "<group>"; };
+		C503AC421BCCA42300539FC9 /* CitationHorizontalListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CitationHorizontalListCell.h; sourceTree = "<group>"; };
+		C503AC431BCCA42300539FC9 /* CitationHorizontalListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CitationHorizontalListCell.m; sourceTree = "<group>"; };
+		C503AC451BCCA99F00539FC9 /* Images */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Images; path = CitationTool/Resources/Images; sourceTree = "<group>"; };
+		C503AC471BCE057400539FC9 /* CountTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CountTextField.h; sourceTree = "<group>"; };
+		C503AC481BCE057400539FC9 /* CountTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CountTextField.m; sourceTree = "<group>"; };
+		C5294A081BD838D700F16037 /* SourceEditor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SourceEditor.h; sourceTree = "<group>"; };
+		C5294A091BD838D700F16037 /* SourceEditor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SourceEditor.m; sourceTree = "<group>"; };
+		C5294A361BDDA07000F16037 /* BibListWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BibListWindow.h; sourceTree = "<group>"; };
+		C5294A371BDDA07000F16037 /* BibListWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BibListWindow.m; sourceTree = "<group>"; };
+		C5294A391BDDA53A00F16037 /* savedInfo.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = savedInfo.txt; path = CitationTool/Resources/savedInfo.txt; sourceTree = "<group>"; };
+		C53B91561BCBF3B000BFBB51 /* CitationTool.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CitationTool.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		C53B915D1BCBF3B000BFBB51 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		C53B915F1BCBF3B000BFBB51 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		C53B91641BCBF3B000BFBB51 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C53B91691BCBF3B100BFBB51 /* CitationToolTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CitationToolTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		C53B916D1BCBF3B100BFBB51 /* CitationToolTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CitationToolTests.m; sourceTree = "<group>"; };
+		C53B916F1BCBF3B100BFBB51 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C53B91741BCBF3B100BFBB51 /* CitationToolUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CitationToolUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		C53B91781BCBF3B100BFBB51 /* CitationToolUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CitationToolUITests.m; sourceTree = "<group>"; };
+		C53B917A1BCBF3B100BFBB51 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C53B91861BCBF4B600BFBB51 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		C53B91871BCBF4B600BFBB51 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		C53B91881BCBF4B600BFBB51 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		C53B91891BCBF4B600BFBB51 /* Base.lproj */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Base.lproj; sourceTree = "<group>"; };
+		C53B918A1BCBF4B600BFBB51 /* BibFormatSpecialist.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BibFormatSpecialist.h; sourceTree = "<group>"; };
+		C53B918B1BCBF4B600BFBB51 /* BibFormatSpecialist.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BibFormatSpecialist.m; sourceTree = "<group>"; };
+		C53B918C1BCBF4B600BFBB51 /* Bibliography.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Bibliography.h; sourceTree = "<group>"; };
+		C53B918D1BCBF4B600BFBB51 /* Bibliography.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Bibliography.m; sourceTree = "<group>"; };
+		C53B918E1BCBF4B600BFBB51 /* BibListController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BibListController.h; sourceTree = "<group>"; };
+		C53B918F1BCBF4B600BFBB51 /* BibListController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BibListController.m; sourceTree = "<group>"; };
+		C53B91901BCBF4B600BFBB51 /* BibListController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BibListController.xib; sourceTree = "<group>"; };
+		C53B91911BCBF4B600BFBB51 /* CitationEditorPanel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CitationEditorPanel.h; sourceTree = "<group>"; };
+		C53B91921BCBF4B600BFBB51 /* CitationEditorPanel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CitationEditorPanel.m; sourceTree = "<group>"; };
+		C53B91931BCBF4B600BFBB51 /* CitationEditorPanel.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CitationEditorPanel.xib; sourceTree = "<group>"; };
+		C53B91941BCBF4B600BFBB51 /* CitationModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CitationModel.h; sourceTree = "<group>"; };
+		C53B91951BCBF4B600BFBB51 /* CitationModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CitationModel.m; sourceTree = "<group>"; };
+		C53B91971BCBF4B600BFBB51 /* CountCellView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CountCellView.h; sourceTree = "<group>"; };
+		C53B91981BCBF4B600BFBB51 /* CountCellView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CountCellView.m; sourceTree = "<group>"; };
+		C53B91991BCBF4B600BFBB51 /* CustomImageBox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomImageBox.h; sourceTree = "<group>"; };
+		C53B919A1BCBF4B600BFBB51 /* CustomImageBox.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomImageBox.m; sourceTree = "<group>"; };
+		C53B919B1BCBF4B600BFBB51 /* CustomRow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomRow.h; sourceTree = "<group>"; };
+		C53B919C1BCBF4B600BFBB51 /* CustomRow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomRow.m; sourceTree = "<group>"; };
+		C53B919D1BCBF4B600BFBB51 /* EditableCellView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditableCellView.h; sourceTree = "<group>"; };
+		C53B919E1BCBF4B600BFBB51 /* EditableCellView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditableCellView.m; sourceTree = "<group>"; };
+		C53B919F1BCBF4B600BFBB51 /* EditorController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditorController.h; sourceTree = "<group>"; };
+		C53B91A01BCBF4B600BFBB51 /* EditorController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditorController.m; sourceTree = "<group>"; };
+		C53B91A11BCBF4B600BFBB51 /* FieldCellView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FieldCellView.h; sourceTree = "<group>"; };
+		C53B91A21BCBF4B600BFBB51 /* FieldCellView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FieldCellView.m; sourceTree = "<group>"; };
+		C53B91B51BCBF51B00BFBB51 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/CitationModel.xib; sourceTree = "<group>"; };
+		C53B91C11BCBF53200BFBB51 /* MainWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainWindow.h; sourceTree = "<group>"; };
+		C53B91C21BCBF53200BFBB51 /* MainWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainWindow.m; sourceTree = "<group>"; };
+		C53B91C31BCBF53200BFBB51 /* Name.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Name.h; sourceTree = "<group>"; };
+		C53B91C41BCBF53200BFBB51 /* Name.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Name.m; sourceTree = "<group>"; };
+		C53B91C71BCBF53200BFBB51 /* PopUpView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PopUpView.h; sourceTree = "<group>"; };
+		C53B91C81BCBF53200BFBB51 /* PopUpView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PopUpView.m; sourceTree = "<group>"; };
+		C53B91C91BCBF53200BFBB51 /* PreferencesController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PreferencesController.h; sourceTree = "<group>"; };
+		C53B91CA1BCBF53200BFBB51 /* PreferencesController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PreferencesController.m; sourceTree = "<group>"; };
+		C53B91CB1BCBF53200BFBB51 /* PreferencesWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PreferencesWindow.xib; sourceTree = "<group>"; };
+		C53B91CD1BCBF53200BFBB51 /* Reference.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reference.h; sourceTree = "<group>"; };
+		C53B91CE1BCBF53200BFBB51 /* Reference.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reference.m; sourceTree = "<group>"; };
+		C53B91CF1BCBF53200BFBB51 /* ReferenceCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReferenceCell.h; sourceTree = "<group>"; };
+		C53B91D01BCBF53200BFBB51 /* ReferenceCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReferenceCell.m; sourceTree = "<group>"; };
+		C53B91D11BCBF53200BFBB51 /* ReferenceEntry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReferenceEntry.h; sourceTree = "<group>"; };
+		C53B91D21BCBF53200BFBB51 /* ReferenceEntry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReferenceEntry.m; sourceTree = "<group>"; };
+		C53B91D31BCBF53200BFBB51 /* ReferenceEntry.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ReferenceEntry.xib; sourceTree = "<group>"; };
+		C53B91D41BCBF53200BFBB51 /* ReferenceRow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReferenceRow.h; sourceTree = "<group>"; };
+		C53B91D51BCBF53200BFBB51 /* ReferenceRow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReferenceRow.m; sourceTree = "<group>"; };
+		C53B91D71BCBF53200BFBB51 /* SourceView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SourceView.h; sourceTree = "<group>"; };
+		C53B91D81BCBF53200BFBB51 /* SourceView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SourceView.m; sourceTree = "<group>"; };
+		C53B91F11BCBF84E00BFBB51 /* Citation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Citation.h; sourceTree = "<group>"; };
+		C53B91F21BCBF84E00BFBB51 /* Citation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Citation.m; sourceTree = "<group>"; };
+		C53B91F71BCBF84E00BFBB51 /* Location.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Location.h; sourceTree = "<group>"; };
+		C53B91F81BCBF84E00BFBB51 /* Location.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Location.m; sourceTree = "<group>"; };
+		C53B91F91BCBF84E00BFBB51 /* Parser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Parser.h; sourceTree = "<group>"; };
+		C53B91FA1BCBF84E00BFBB51 /* Parser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Parser.m; sourceTree = "<group>"; };
+		C53B91FD1BCBF84E00BFBB51 /* Year.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Year.h; sourceTree = "<group>"; };
+		C53B91FE1BCBF84E00BFBB51 /* Year.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Year.m; sourceTree = "<group>"; };
+		C53B92071BCBFB4600BFBB51 /* CitationTool.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = CitationTool.icns; path = CitationTool/Resources/CitationTool.icns; sourceTree = "<group>"; };
+		C53B92361BCC3D0700BFBB51 /* en_GB-large.txt */ = {isa = PBXFileReference; lastKnownFileType = text; name = "en_GB-large.txt"; path = "CitationTool/Resources/en_GB-large.txt"; sourceTree = "<group>"; };
+		C53B92371BCC3D0700BFBB51 /* nonNames.txt */ = {isa = PBXFileReference; lastKnownFileType = text; name = nonNames.txt; path = CitationTool/Resources/nonNames.txt; sourceTree = "<group>"; };
+		C53B92381BCC3D0700BFBB51 /* prefixes.txt */ = {isa = PBXFileReference; lastKnownFileType = text; name = prefixes.txt; path = CitationTool/Resources/prefixes.txt; sourceTree = "<group>"; };
+		C54E61B11BD14ECC00208F8C /* LaTexCommander.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LaTexCommander.h; path = ../../LaTeX/LaTeX/LaTexCommander.h; sourceTree = "<group>"; };
+		C54E61B21BD14ECC00208F8C /* LaTexCommander.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LaTexCommander.m; path = ../../LaTeX/LaTeX/LaTexCommander.m; sourceTree = "<group>"; };
+		C54E61B31BD14ECC00208F8C /* LaTeXComponent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LaTeXComponent.h; path = ../../LaTeX/LaTeX/LaTeXComponent.h; sourceTree = "<group>"; };
+		C54E61B41BD14ECC00208F8C /* LaTeXComponent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LaTeXComponent.m; path = ../../LaTeX/LaTeX/LaTeXComponent.m; sourceTree = "<group>"; };
+		C54E61B51BD14ECC00208F8C /* LaTeXString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LaTeXString.h; path = ../../LaTeX/LaTeX/LaTeXString.h; sourceTree = "<group>"; };
+		C54E61B61BD14ECC00208F8C /* LaTeXString.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LaTeXString.m; path = ../../LaTeX/LaTeX/LaTeXString.m; sourceTree = "<group>"; };
+		C54E61B71BD14ECC00208F8C /* TeXTranslator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TeXTranslator.h; path = ../../LaTeX/LaTeX/TeXTranslator.h; sourceTree = "<group>"; };
+		C54E61B81BD14ECC00208F8C /* TeXTranslator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TeXTranslator.m; path = ../../LaTeX/LaTeX/TeXTranslator.m; sourceTree = "<group>"; };
+		C54E61B91BD14ECC00208F8C /* UnicodeString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = UnicodeString.h; path = ../../LaTeX/LaTeX/UnicodeString.h; sourceTree = "<group>"; };
+		C54E61BA1BD14ECC00208F8C /* UnicodeString.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = UnicodeString.m; path = ../../LaTeX/LaTeX/UnicodeString.m; sourceTree = "<group>"; };
+		C54E61C11BD1F47C00208F8C /* BibTexTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BibTexTextView.h; sourceTree = "<group>"; };
+		C54E61C21BD1F47D00208F8C /* BibTexTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BibTexTextView.m; sourceTree = "<group>"; };
+		C54E61C41BD24A0200208F8C /* CiteListRow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CiteListRow.h; sourceTree = "<group>"; };
+		C54E61C51BD24A0200208F8C /* CiteListRow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CiteListRow.m; sourceTree = "<group>"; };
+		C54E61DA1BD4925900208F8C /* StringIterator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StringIterator.h; sourceTree = "<group>"; };
+		C54E61DB1BD4925900208F8C /* StringIterator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StringIterator.m; sourceTree = "<group>"; };
+		C54E61DD1BD4A97800208F8C /* CitationIterator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CitationIterator.h; sourceTree = "<group>"; };
+		C54E61DE1BD4A97800208F8C /* CitationIterator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CitationIterator.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		C53B91531BCBF3B000BFBB51 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C53B91661BCBF3B100BFBB51 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C53B91711BCBF3B100BFBB51 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		C53B914D1BCBF3B000BFBB51 = {
+			isa = PBXGroup;
+			children = (
+				C53B92621BCC3FE400BFBB51 /* Resources */,
+				C53B92071BCBFB4600BFBB51 /* CitationTool.icns */,
+				C53B91581BCBF3B000BFBB51 /* CitationTool */,
+				C53B916C1BCBF3B100BFBB51 /* CitationToolTests */,
+				C53B91771BCBF3B100BFBB51 /* CitationToolUITests */,
+				C53B91571BCBF3B000BFBB51 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		C53B91571BCBF3B000BFBB51 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				C53B91561BCBF3B000BFBB51 /* CitationTool.app */,
+				C53B91691BCBF3B100BFBB51 /* CitationToolTests.xctest */,
+				C53B91741BCBF3B100BFBB51 /* CitationToolUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		C53B91581BCBF3B000BFBB51 /* CitationTool */ = {
+			isa = PBXGroup;
+			children = (
+				C53B91861BCBF4B600BFBB51 /* AppDelegate.h */,
+				C53B91871BCBF4B600BFBB51 /* AppDelegate.m */,
+				C53B920A1BCBFCA000BFBB51 /* Biblist Window */,
+				C54E61C01BD14ED900208F8C /* LaTeX */,
+				C53B92091BCBFC2400BFBB51 /* Citation */,
+				C53B920C1BCBFD2200BFBB51 /* Main Window */,
+				C53B920D1BCBFD3400BFBB51 /* Preferences Window */,
+				C53B920E1BCBFDEC00BFBB51 /* Reference Window */,
+				C53B91881BCBF4B600BFBB51 /* Assets.xcassets */,
+				C53B91891BCBF4B600BFBB51 /* Base.lproj */,
+				C53B920B1BCBFCB300BFBB51 /* Editor Window */,
+				C53B91991BCBF4B600BFBB51 /* CustomImageBox.h */,
+				C53B919A1BCBF4B600BFBB51 /* CustomImageBox.m */,
+				C53B919D1BCBF4B600BFBB51 /* EditableCellView.h */,
+				C53B919E1BCBF4B600BFBB51 /* EditableCellView.m */,
+				C53B91A11BCBF4B600BFBB51 /* FieldCellView.h */,
+				C53B91A21BCBF4B600BFBB51 /* FieldCellView.m */,
+				C53B915F1BCBF3B000BFBB51 /* Assets.xcassets */,
+				C53B91641BCBF3B000BFBB51 /* Info.plist */,
+				C53B915C1BCBF3B000BFBB51 /* Supporting Files */,
+			);
+			path = CitationTool;
+			sourceTree = "<group>";
+		};
+		C53B915C1BCBF3B000BFBB51 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				C53B915D1BCBF3B000BFBB51 /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		C53B916C1BCBF3B100BFBB51 /* CitationToolTests */ = {
+			isa = PBXGroup;
+			children = (
+				C53B916D1BCBF3B100BFBB51 /* CitationToolTests.m */,
+				C53B916F1BCBF3B100BFBB51 /* Info.plist */,
+			);
+			path = CitationToolTests;
+			sourceTree = "<group>";
+		};
+		C53B91771BCBF3B100BFBB51 /* CitationToolUITests */ = {
+			isa = PBXGroup;
+			children = (
+				C53B91781BCBF3B100BFBB51 /* CitationToolUITests.m */,
+				C53B917A1BCBF3B100BFBB51 /* Info.plist */,
+			);
+			path = CitationToolUITests;
+			sourceTree = "<group>";
+		};
+		C53B92091BCBFC2400BFBB51 /* Citation */ = {
+			isa = PBXGroup;
+			children = (
+				C53B918A1BCBF4B600BFBB51 /* BibFormatSpecialist.h */,
+				C53B918B1BCBF4B600BFBB51 /* BibFormatSpecialist.m */,
+				C53B918C1BCBF4B600BFBB51 /* Bibliography.h */,
+				C53B918D1BCBF4B600BFBB51 /* Bibliography.m */,
+				C53B91C31BCBF53200BFBB51 /* Name.h */,
+				C53B91C41BCBF53200BFBB51 /* Name.m */,
+				C53B91CD1BCBF53200BFBB51 /* Reference.h */,
+				C53B91CE1BCBF53200BFBB51 /* Reference.m */,
+				C54E61DD1BD4A97800208F8C /* CitationIterator.h */,
+				C54E61DE1BD4A97800208F8C /* CitationIterator.m */,
+				C54E61DA1BD4925900208F8C /* StringIterator.h */,
+				C54E61DB1BD4925900208F8C /* StringIterator.m */,
+				C53B91FD1BCBF84E00BFBB51 /* Year.h */,
+				C53B91FE1BCBF84E00BFBB51 /* Year.m */,
+				C53B91F71BCBF84E00BFBB51 /* Location.h */,
+				C53B91F81BCBF84E00BFBB51 /* Location.m */,
+				C53B91F91BCBF84E00BFBB51 /* Parser.h */,
+				C53B91FA1BCBF84E00BFBB51 /* Parser.m */,
+				C53B91F11BCBF84E00BFBB51 /* Citation.h */,
+				C53B91F21BCBF84E00BFBB51 /* Citation.m */,
+			);
+			name = Citation;
+			sourceTree = "<group>";
+		};
+		C53B920A1BCBFCA000BFBB51 /* Biblist Window */ = {
+			isa = PBXGroup;
+			children = (
+				C53B91901BCBF4B600BFBB51 /* BibListController.xib */,
+				C53B918E1BCBF4B600BFBB51 /* BibListController.h */,
+				C53B918F1BCBF4B600BFBB51 /* BibListController.m */,
+				C5294A361BDDA07000F16037 /* BibListWindow.h */,
+				C5294A371BDDA07000F16037 /* BibListWindow.m */,
+				C503AC471BCE057400539FC9 /* CountTextField.h */,
+				C503AC481BCE057400539FC9 /* CountTextField.m */,
+			);
+			name = "Biblist Window";
+			sourceTree = "<group>";
+		};
+		C53B920B1BCBFCB300BFBB51 /* Editor Window */ = {
+			isa = PBXGroup;
+			children = (
+				C53B91931BCBF4B600BFBB51 /* CitationEditorPanel.xib */,
+				C5294A081BD838D700F16037 /* SourceEditor.h */,
+				C5294A091BD838D700F16037 /* SourceEditor.m */,
+				C53B919F1BCBF4B600BFBB51 /* EditorController.h */,
+				C53B91A01BCBF4B600BFBB51 /* EditorController.m */,
+				C53B91D41BCBF53200BFBB51 /* ReferenceRow.h */,
+				C53B91D51BCBF53200BFBB51 /* ReferenceRow.m */,
+				C53B91CF1BCBF53200BFBB51 /* ReferenceCell.h */,
+				C53B91D01BCBF53200BFBB51 /* ReferenceCell.m */,
+				C53B919B1BCBF4B600BFBB51 /* CustomRow.h */,
+				C53B919C1BCBF4B600BFBB51 /* CustomRow.m */,
+				C53B91911BCBF4B600BFBB51 /* CitationEditorPanel.h */,
+				C53B91921BCBF4B600BFBB51 /* CitationEditorPanel.m */,
+				C503AC3F1BCCA16200539FC9 /* CitationsHorizontalList.h */,
+				C503AC401BCCA16200539FC9 /* CitationsHorizontalList.m */,
+				C503AC421BCCA42300539FC9 /* CitationHorizontalListCell.h */,
+				C503AC431BCCA42300539FC9 /* CitationHorizontalListCell.m */,
+			);
+			name = "Editor Window";
+			sourceTree = "<group>";
+		};
+		C53B920C1BCBFD2200BFBB51 /* Main Window */ = {
+			isa = PBXGroup;
+			children = (
+				C53B91B41BCBF51B00BFBB51 /* CitationModel.xib */,
+				C53B91941BCBF4B600BFBB51 /* CitationModel.h */,
+				C53B91951BCBF4B600BFBB51 /* CitationModel.m */,
+				C53B91971BCBF4B600BFBB51 /* CountCellView.h */,
+				C53B91981BCBF4B600BFBB51 /* CountCellView.m */,
+				C53B91C11BCBF53200BFBB51 /* MainWindow.h */,
+				C53B91C21BCBF53200BFBB51 /* MainWindow.m */,
+				C53B91C71BCBF53200BFBB51 /* PopUpView.h */,
+				C53B91C81BCBF53200BFBB51 /* PopUpView.m */,
+				C53B91D71BCBF53200BFBB51 /* SourceView.h */,
+				C53B91D81BCBF53200BFBB51 /* SourceView.m */,
+				C54E61C41BD24A0200208F8C /* CiteListRow.h */,
+				C54E61C51BD24A0200208F8C /* CiteListRow.m */,
+			);
+			name = "Main Window";
+			sourceTree = "<group>";
+		};
+		C53B920D1BCBFD3400BFBB51 /* Preferences Window */ = {
+			isa = PBXGroup;
+			children = (
+				C53B91C91BCBF53200BFBB51 /* PreferencesController.h */,
+				C53B91CA1BCBF53200BFBB51 /* PreferencesController.m */,
+				C53B91CB1BCBF53200BFBB51 /* PreferencesWindow.xib */,
+			);
+			name = "Preferences Window";
+			sourceTree = "<group>";
+		};
+		C53B920E1BCBFDEC00BFBB51 /* Reference Window */ = {
+			isa = PBXGroup;
+			children = (
+				C53B91D31BCBF53200BFBB51 /* ReferenceEntry.xib */,
+				C53B91D11BCBF53200BFBB51 /* ReferenceEntry.h */,
+				C53B91D21BCBF53200BFBB51 /* ReferenceEntry.m */,
+				C54E61C11BD1F47C00208F8C /* BibTexTextView.h */,
+				C54E61C21BD1F47D00208F8C /* BibTexTextView.m */,
+			);
+			name = "Reference Window";
+			sourceTree = "<group>";
+		};
+		C53B92621BCC3FE400BFBB51 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				C503AC451BCCA99F00539FC9 /* Images */,
+				C53B92361BCC3D0700BFBB51 /* en_GB-large.txt */,
+				C53B92371BCC3D0700BFBB51 /* nonNames.txt */,
+				C53B92381BCC3D0700BFBB51 /* prefixes.txt */,
+				C5294A391BDDA53A00F16037 /* savedInfo.txt */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		C54E61C01BD14ED900208F8C /* LaTeX */ = {
+			isa = PBXGroup;
+			children = (
+				C54E61B11BD14ECC00208F8C /* LaTexCommander.h */,
+				C54E61B21BD14ECC00208F8C /* LaTexCommander.m */,
+				C54E61B31BD14ECC00208F8C /* LaTeXComponent.h */,
+				C54E61B41BD14ECC00208F8C /* LaTeXComponent.m */,
+				C54E61B51BD14ECC00208F8C /* LaTeXString.h */,
+				C54E61B61BD14ECC00208F8C /* LaTeXString.m */,
+				C54E61B91BD14ECC00208F8C /* UnicodeString.h */,
+				C54E61BA1BD14ECC00208F8C /* UnicodeString.m */,
+				C54E61B71BD14ECC00208F8C /* TeXTranslator.h */,
+				C54E61B81BD14ECC00208F8C /* TeXTranslator.m */,
+			);
+			name = LaTeX;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		C53B91551BCBF3B000BFBB51 /* CitationTool */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C53B917D1BCBF3B100BFBB51 /* Build configuration list for PBXNativeTarget "CitationTool" */;
+			buildPhases = (
+				C53B91521BCBF3B000BFBB51 /* Sources */,
+				C53B91531BCBF3B000BFBB51 /* Frameworks */,
+				C53B91541BCBF3B000BFBB51 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = CitationTool;
+			productName = CitationTool;
+			productReference = C53B91561BCBF3B000BFBB51 /* CitationTool.app */;
+			productType = "com.apple.product-type.application";
+		};
+		C53B91681BCBF3B100BFBB51 /* CitationToolTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C53B91801BCBF3B100BFBB51 /* Build configuration list for PBXNativeTarget "CitationToolTests" */;
+			buildPhases = (
+				C53B91651BCBF3B100BFBB51 /* Sources */,
+				C53B91661BCBF3B100BFBB51 /* Frameworks */,
+				C53B91671BCBF3B100BFBB51 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				C53B916B1BCBF3B100BFBB51 /* PBXTargetDependency */,
+			);
+			name = CitationToolTests;
+			productName = CitationToolTests;
+			productReference = C53B91691BCBF3B100BFBB51 /* CitationToolTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		C53B91731BCBF3B100BFBB51 /* CitationToolUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C53B91831BCBF3B100BFBB51 /* Build configuration list for PBXNativeTarget "CitationToolUITests" */;
+			buildPhases = (
+				C53B91701BCBF3B100BFBB51 /* Sources */,
+				C53B91711BCBF3B100BFBB51 /* Frameworks */,
+				C53B91721BCBF3B100BFBB51 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				C53B91761BCBF3B100BFBB51 /* PBXTargetDependency */,
+			);
+			name = CitationToolUITests;
+			productName = CitationToolUITests;
+			productReference = C53B91741BCBF3B100BFBB51 /* CitationToolUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		C53B914E1BCBF3B000BFBB51 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0700;
+				ORGANIZATIONNAME = "Thomas Gray";
+				TargetAttributes = {
+					C53B91551BCBF3B000BFBB51 = {
+						CreatedOnToolsVersion = 7.0;
+					};
+					C53B91681BCBF3B100BFBB51 = {
+						CreatedOnToolsVersion = 7.0;
+						TestTargetID = C53B91551BCBF3B000BFBB51;
+					};
+					C53B91731BCBF3B100BFBB51 = {
+						CreatedOnToolsVersion = 7.0;
+						TestTargetID = C53B91551BCBF3B000BFBB51;
+					};
+				};
+			};
+			buildConfigurationList = C53B91511BCBF3B000BFBB51 /* Build configuration list for PBXProject "CitationTool" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = C53B914D1BCBF3B000BFBB51;
+			productRefGroup = C53B91571BCBF3B000BFBB51 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				C53B91551BCBF3B000BFBB51 /* CitationTool */,
+				C53B91681BCBF3B100BFBB51 /* CitationToolTests */,
+				C53B91731BCBF3B100BFBB51 /* CitationToolUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		C53B91541BCBF3B000BFBB51 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C503AC461BCCA99F00539FC9 /* Images in Resources */,
+				C53B92391BCC3D0700BFBB51 /* en_GB-large.txt in Resources */,
+				C53B923A1BCC3D0700BFBB51 /* nonNames.txt in Resources */,
+				C5294A3A1BDDA53A00F16037 /* savedInfo.txt in Resources */,
+				C53B923B1BCC3D0700BFBB51 /* prefixes.txt in Resources */,
+				C53B92081BCBFB4600BFBB51 /* CitationTool.icns in Resources */,
+				C53B92061BCBFB0600BFBB51 /* CitationEditorPanel.xib in Resources */,
+				C53B91EC1BCBF53200BFBB51 /* ReferenceEntry.xib in Resources */,
+				C53B91E71BCBF53200BFBB51 /* PreferencesWindow.xib in Resources */,
+				C53B91A51BCBF4B600BFBB51 /* Base.lproj in Resources */,
+				C53B91601BCBF3B000BFBB51 /* Assets.xcassets in Resources */,
+				C53B91B61BCBF51B00BFBB51 /* CitationModel.xib in Resources */,
+				C53B91A91BCBF4B600BFBB51 /* BibListController.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C53B91671BCBF3B100BFBB51 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C53B91721BCBF3B100BFBB51 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		C53B91521BCBF3B000BFBB51 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C53B91ED1BCBF53200BFBB51 /* ReferenceRow.m in Sources */,
+				C5294A381BDDA07000F16037 /* BibListWindow.m in Sources */,
+				C54E61DF1BD4A97800208F8C /* CitationIterator.m in Sources */,
+				C53B91E91BCBF53200BFBB51 /* Reference.m in Sources */,
+				C53B91FF1BCBF84E00BFBB51 /* Citation.m in Sources */,
+				C53B91AF1BCBF4B600BFBB51 /* CustomImageBox.m in Sources */,
+				C53B91E11BCBF53200BFBB51 /* MainWindow.m in Sources */,
+				C53B91B01BCBF4B600BFBB51 /* CustomRow.m in Sources */,
+				C53B91B31BCBF4B600BFBB51 /* FieldCellView.m in Sources */,
+				C54E61BE1BD14ECC00208F8C /* TeXTranslator.m in Sources */,
+				C5294A0A1BD838D700F16037 /* SourceEditor.m in Sources */,
+				C54E61BB1BD14ECC00208F8C /* LaTexCommander.m in Sources */,
+				C53B91A61BCBF4B600BFBB51 /* BibFormatSpecialist.m in Sources */,
+				C53B92051BCBF84E00BFBB51 /* Year.m in Sources */,
+				C53B91EF1BCBF53200BFBB51 /* SourceView.m in Sources */,
+				C503AC441BCCA42300539FC9 /* CitationHorizontalListCell.m in Sources */,
+				C53B91A81BCBF4B600BFBB51 /* BibListController.m in Sources */,
+				C53B92031BCBF84E00BFBB51 /* Parser.m in Sources */,
+				C54E61C61BD24A0200208F8C /* CiteListRow.m in Sources */,
+				C54E61BC1BD14ECC00208F8C /* LaTeXComponent.m in Sources */,
+				C53B91E21BCBF53200BFBB51 /* Name.m in Sources */,
+				C503AC411BCCA16200539FC9 /* CitationsHorizontalList.m in Sources */,
+				C53B91EB1BCBF53200BFBB51 /* ReferenceEntry.m in Sources */,
+				C54E61BD1BD14ECC00208F8C /* LaTeXString.m in Sources */,
+				C53B91B21BCBF4B600BFBB51 /* EditorController.m in Sources */,
+				C54E61C31BD1F47D00208F8C /* BibTexTextView.m in Sources */,
+				C53B91E61BCBF53200BFBB51 /* PreferencesController.m in Sources */,
+				C53B91AA1BCBF4B600BFBB51 /* CitationEditorPanel.m in Sources */,
+				C53B91E51BCBF53200BFBB51 /* PopUpView.m in Sources */,
+				C54E61BF1BD14ECC00208F8C /* UnicodeString.m in Sources */,
+				C53B92021BCBF84E00BFBB51 /* Location.m in Sources */,
+				C54E61DC1BD4925900208F8C /* StringIterator.m in Sources */,
+				C53B91A71BCBF4B600BFBB51 /* Bibliography.m in Sources */,
+				C53B91B11BCBF4B600BFBB51 /* EditableCellView.m in Sources */,
+				C53B91A31BCBF4B600BFBB51 /* AppDelegate.m in Sources */,
+				C53B91EA1BCBF53200BFBB51 /* ReferenceCell.m in Sources */,
+				C53B915E1BCBF3B000BFBB51 /* main.m in Sources */,
+				C503AC491BCE057400539FC9 /* CountTextField.m in Sources */,
+				C53B91AE1BCBF4B600BFBB51 /* CountCellView.m in Sources */,
+				C53B91AC1BCBF4B600BFBB51 /* CitationModel.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C53B91651BCBF3B100BFBB51 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C53B916E1BCBF3B100BFBB51 /* CitationToolTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C53B91701BCBF3B100BFBB51 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C53B91791BCBF3B100BFBB51 /* CitationToolUITests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		C53B916B1BCBF3B100BFBB51 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = C53B91551BCBF3B000BFBB51 /* CitationTool */;
+			targetProxy = C53B916A1BCBF3B100BFBB51 /* PBXContainerItemProxy */;
+		};
+		C53B91761BCBF3B100BFBB51 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = C53B91551BCBF3B000BFBB51 /* CitationTool */;
+			targetProxy = C53B91751BCBF3B100BFBB51 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		C53B91B41BCBF51B00BFBB51 /* CitationModel.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C53B91B51BCBF51B00BFBB51 /* Base */,
+			);
+			name = CitationModel.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		C53B917B1BCBF3B100BFBB51 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		C53B917C1BCBF3B100BFBB51 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		C53B917E1BCBF3B100BFBB51 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = CitationTool/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = Gray.CitationTool;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		C53B917F1BCBF3B100BFBB51 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = CitationTool/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = Gray.CitationTool;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		C53B91811BCBF3B100BFBB51 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = CitationToolTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = Gray.CitationToolTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CitationTool.app/Contents/MacOS/CitationTool";
+			};
+			name = Debug;
+		};
+		C53B91821BCBF3B100BFBB51 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = CitationToolTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = Gray.CitationToolTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CitationTool.app/Contents/MacOS/CitationTool";
+			};
+			name = Release;
+		};
+		C53B91841BCBF3B100BFBB51 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = CitationToolUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = Gray.CitationToolUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = CitationTool;
+				USES_XCTRUNNER = YES;
+			};
+			name = Debug;
+		};
+		C53B91851BCBF3B100BFBB51 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = CitationToolUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = Gray.CitationToolUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = CitationTool;
+				USES_XCTRUNNER = YES;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		C53B91511BCBF3B000BFBB51 /* Build configuration list for PBXProject "CitationTool" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C53B917B1BCBF3B100BFBB51 /* Debug */,
+				C53B917C1BCBF3B100BFBB51 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C53B917D1BCBF3B100BFBB51 /* Build configuration list for PBXNativeTarget "CitationTool" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C53B917E1BCBF3B100BFBB51 /* Debug */,
+				C53B917F1BCBF3B100BFBB51 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C53B91801BCBF3B100BFBB51 /* Build configuration list for PBXNativeTarget "CitationToolTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C53B91811BCBF3B100BFBB51 /* Debug */,
+				C53B91821BCBF3B100BFBB51 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C53B91831BCBF3B100BFBB51 /* Build configuration list for PBXNativeTarget "CitationToolUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C53B91841BCBF3B100BFBB51 /* Debug */,
+				C53B91851BCBF3B100BFBB51 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = C53B914E1BCBF3B000BFBB51 /* Project object */;
+}

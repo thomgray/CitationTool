@@ -1,4 +1,5 @@
 #import "CitationEditorPanel.h"
+#import "AppDelegate.h"
 
 @implementation CitationEditorPanel
 
@@ -10,20 +11,30 @@
     return YES;
 }
 
--(void)awakeFromNib{
-    NSString* path = [NSString stringWithFormat:@"%@/Images/", [[NSBundle mainBundle]resourcePath]] ;
-    NSImage *right = [[NSImage alloc]initWithContentsOfFile:[path stringByAppendingString:@"arrowRight.png"]];
-    NSImage *left = [[NSImage alloc]initWithContentsOfFile:[path stringByAppendingString:@"arrowLeft.png"]];
-    NSImage *up = [[NSImage alloc]initWithContentsOfFile:[path stringByAppendingString:@"arrowUp.png"]];
-    NSImage *down = [[NSImage alloc]initWithContentsOfFile:[path stringByAppendingString:@"arrowDown.png"]];
+-(void)awakeFromNib{    
+    [rightArrow setImage:[AppDelegate getImageNamed:@"arrowRight"]];
+    [leftArrow setImage:[AppDelegate getImageNamed:@"arrowLeft"]];
+    [upArrow setImage:[AppDelegate getImageNamed:@"arrowUp"]];
+    [downArrow setImage:[AppDelegate getImageNamed:@"arrowDown"]];
+    [ignoreButton setImage:[AppDelegate getImageNamed:@"cancel"]];
     
-    NSImage * cancel = [[NSImage alloc]initByReferencingFile:[path stringByAppendingString:@"cancel.png"]];
+    NSImage* addUp = [AppDelegate getImageNamed:@"addIconUp_15"];
+    NSImage* addDown = [AppDelegate getImageNamed:@"addIconDown_15"];
+    NSImage* forgetUp = [AppDelegate getImageNamed:@"forgetIconUp_15"];
+    NSImage* forgetDown = [AppDelegate getImageNamed:@"forgetIconDown_15"];
+    NSImage* removeUp = [AppDelegate getImageNamed:@"removeIconUp_15"];
+    NSImage* removeDown = [AppDelegate getImageNamed:@"removeIconDown_15"];
     
-    [rightArrow setImage:right];
-    [leftArrow setImage:left];
-    [upArrow setImage:up];
-    [downArrow setImage:down];
-    [ignoreButton setImage:cancel];
+    [addAuthorButton setImage:addUp];
+    [addAuthorButton setAlternateImage:addDown];
+    [addReferenceButton setImage:addUp];
+    [addReferenceButton setAlternateImage:addDown];
+    [removeAuthorButton setImage:removeUp];
+    [removeAuthorButton setAlternateImage:removeDown];
+    [forgetAuthorButton setImage:forgetUp];
+    [forgetAuthorButton setAlternateImage:forgetDown];
+    [ignoreButton setImage:forgetUp];
+    [ignoreButton setAlternateImage:forgetDown];
 }
 
 -(void)moveRight:(id)sender{

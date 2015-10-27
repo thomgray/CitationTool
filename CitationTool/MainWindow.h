@@ -8,17 +8,21 @@
 
 #import <Cocoa/Cocoa.h>
 #import "Parser.h"
-#import "CitationList.h"
 #import "CitationModel.h"
 #import "Bibliography.h"
 #import "BibListController.h"
 
 
-@interface MainWindow : NSWindow{
+@interface MainWindow : NSWindow <NSSplitViewDelegate>{
         
     __unsafe_unretained IBOutlet NSTextView *sourceView;
     __unsafe_unretained IBOutlet NSTableView *citationListView;
     __unsafe_unretained IBOutlet NSTextView *bibliographyView;
+    
+    __weak IBOutlet NSButton *sourceAddButton;    
+    __weak IBOutlet NSButton *citationsGetButton;
+    __weak IBOutlet NSButton *exportBibButton;
+    __weak IBOutlet NSButton *saveSourceButton;
     
     float sourceCiteMeetingRatio;
     float sourceCiteArseRatio;
@@ -29,16 +33,15 @@
 
 #pragma mark Related Fields
 
-@property NSMutableArray<Bibliography*>* bibliographies;
-@property NSMutableArray<Reference*>* references;
-@property NSMutableArray<Citation*>* citations; ///just fold the citations together and forget citation list, it was only useful in the parsing methods
+@property NSMutableArray<Citation*>* citations;
 
 #pragma mark IB fields
 @property IBOutlet CitationModel * citeModel;
 @property BibListController* bibWindow;
 
-- (IBAction)loadBibFile:(id)sender;
 - (IBAction)loadSourceFile:(id)sender;
-- (IBAction)viewMasterBib:(id)sender;
+//- (IBAction)viewMasterBib:(id)sender;
+- (IBAction)getCitations:(id)sender;
+
 
 @end

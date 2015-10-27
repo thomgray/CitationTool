@@ -7,16 +7,24 @@
 //
 
 #import <Cocoa/Cocoa.h>
-#import "MainWindow.h"
+#import "CitationModel.h"
+#import "BibListController.h"
 #import "PreferencesController.h"
 
 @interface AppDelegate : NSObject <NSApplicationDelegate>
 
-@property (unsafe_unretained) IBOutlet MainWindow *mainWindow;
+@property CitationModel *citeModel;
+@property (unsafe_unretained) IBOutlet BibListController* bibController;
 @property PreferencesController * preferenceWindow;
 
 - (IBAction)openPreferences:(id)sender;
+-(IBAction)launchCiteTool:(id)sender;
 
+-(void)notifyUpdatedBibliographies;
+-(void)registerBibUpdate;
+
+
++(NSImage*)getImageNamed:(NSString*)name;
 
 @end
 

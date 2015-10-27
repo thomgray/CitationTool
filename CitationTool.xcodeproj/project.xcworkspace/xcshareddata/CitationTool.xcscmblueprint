@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "8D13FBCB522450BF14D219F8442DF2F7A99E4D3D",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "8D13FBCB522450BF14D219F8442DF2F7A99E4D3D" : 0,
+    "B150C2A695A3E5878CFA19912853B079EB7B0A69" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "71ABD5A8-B1B1-433F-BB82-7358865146F1",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "8D13FBCB522450BF14D219F8442DF2F7A99E4D3D" : "CitationTool\/",
+    "B150C2A695A3E5878CFA19912853B079EB7B0A69" : "LaTeX\/LaTeX\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "CitationTool",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "CitationTool.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/thomgray\/CitationTool.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "8D13FBCB522450BF14D219F8442DF2F7A99E4D3D"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/thomgray\/LaTeX-to-Unicode-Translator.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "B150C2A695A3E5878CFA19912853B079EB7B0A69"
+    }
+  ]
+}

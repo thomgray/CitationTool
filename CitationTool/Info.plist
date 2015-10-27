@@ -27,7 +27,7 @@
 	<key>NSHumanReadableCopyright</key>
 	<string>Copyright © 2015 Thomas Gray. All rights reserved.</string>
 	<key>NSMainNibFile</key>
-	<string>MainMenu</string>
+	<string>BibListController</string>
 	<key>NSPrincipalClass</key>
 	<string>NSApplication</string>
 </dict>

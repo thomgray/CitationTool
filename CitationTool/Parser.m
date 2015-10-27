@@ -12,13 +12,11 @@
     long wordCount;
 }
 
--(void)getCitationsPerPar;
-
 -(NSString*)removeNonAlphaNumerics:(NSString*)in;
 
 -(Year*)getDateWithMod:(NSString*)in;
--(NSString*)getSurround:(WordIterator*)it;
--(void)getSurroundForCitation:(Citation*)loc;
+//-(NSString*)getSurround:(StringIterator*)it;
+//-(void)getSurroundForCitation:(Citation*)loc;
 
 
 
@@ -43,7 +41,7 @@
     grammar = [NSCharacterSet characterSetWithCharactersInString:@"(),.;:[]`{}|\'\""];
     lcases = [NSCharacterSet lowercaseLetterCharacterSet];
     
-    citAnalyser = [[CitationAnalyser alloc]init];
+    //citAnalyser = [[CitationIterator alloc]init];
     return self;
 }
 
@@ -56,93 +54,82 @@
 }
 
 
--(CitationList*)getCitations{
-    citations  = [[CitationList alloc]init];
+-(NSMutableArray<Citation*>*)getCitations{
+    citations  = [[NSMutableArray alloc]init];
     wordCount = 0;
     
-    WordIterator *it = [[WordIterator alloc]initWithParagraph:sourceString];
+    StringIterator *it = [[StringIterator alloc]initWithString:sourceString goingForward:YES];
     NSString *word;
     while ((word=[it nextWord])) {
         wordCount++;
         
         Year *date = [self getDateWithMod:word];
         if (date){
+            CitationIterator* citAnalyser = [[CitationIterator alloc]init];
             Citation* cit = [citAnalyser getCitation:it forDate:date];
-            [self getSurroundForCitation:cit];
+            NSRange yrRange = [sourceString rangeOfString:[date toString] options:NSLiteralSearch range:it.currentWordRange];
+            [[cit.locations firstObject]setYearRangeInSource:yrRange];
+            NSArray* rnges = [[cit.locations firstObject]getAllRangesInSourceInExplicitOrder:NO];
+            NSRange locRng = [CitationIterator mergeRanges:rnges];
+            [[cit.locations firstObject]setRange:locRng];
+//            [self getSurroundForCitation:cit];
             
-            if (cit.authors.count>0){
-                [citations addWholeCitation:cit];
-                cit.assured = TRUE;
+            if (cit.authors.count>0) {
+                [cit setAssured:YES];
+                for (NSInteger k=0; k<citations.count; k++) {
+                    Citation* c = [citations objectAtIndex:k];
+                    if ([c isEquivalent:cit]) {
+                        [c.locations addObjectsFromArray:cit.locations];
+                        goto here;
+                    }
+                }
+                [citations addObject:cit];
             }else{
-                [citations addPossibleCitation:cit];
-                cit.assured = FALSE;
+                [cit setAssured:NO];
+                [citations addObject:cit];
             }
+        here: continue;
         }
     }
-    [citations sortAlphabetically];
+    [citations sortUsingSelector:@selector(compare:)];
     return citations;
 }
 
--(void)getCitationsPerPar{
-    WordIterator *it = [[WordIterator alloc]initWithParagraph:sourceString];
-    NSString *word;
-    while ((word=[it nextWord])) {
-        wordCount++;
-        
-        Year *date = [self getDateWithMod:word];
-        //NSLog(@"getCitationsPerPar: processing %@", word);
-        if (date){
-            //NSLog(@"Found a date: %ld", (long)date.year);
-            Citation* cit = [citAnalyser getCitation:it forDate:date];
-            Location *l = [cit.locations firstObject];
-            l.surround = [self getSurround:it];
-            //l.range = it.currentWordRange;
-            
-            //[cit addLocation:l];
-            
-            if (cit.authors.count>0){
-                [citations addWholeCitation:cit];
-                cit.assured = TRUE;
-            }else{
-                [citations addPossibleCitation:cit];
-                cit.assured = FALSE;
-            }
-        }
-    }
-}
 
--(NSString*)getSurround:(WordIterator *)it{
-    NSString * out;
-    NSInteger i = it.position;
-    NSInteger top = i+100>it.paragraph.length? it.paragraph.length:i+100;
-    NSInteger bottom = i-150<0? 0:i-150;
-    out = [it.paragraph substringWithRange:NSMakeRange(bottom, top-bottom)];
-    if (top!=it.paragraph.length) {
-        out = [out stringByAppendingString:@"..."];
-    }
-    if (bottom>0) {
-        out = [NSString stringWithFormat:@"...%@", out];
-    }
-    return out;
-}
+//-(NSString*)getSurround:(StringIterator *)it{
+//    NSString * out;
+//    NSInteger i = it.position;
+//    NSInteger top = i+100>it.paragraph.length? it.paragraph.length:i+100;
+//    NSInteger bottom = i-150<0? 0:i-150;
+//    out = [it.paragraph substringWithRange:NSMakeRange(bottom, top-bottom)];
+//    if (top!=it.paragraph.length) {
+//        out = [out stringByAppendingString:@"..."];
+//    }
+//    if (bottom>0) {
+//        out = [NSString stringWithFormat:@"...%@", out];
+//    }
+//    return out;
+//}
 
--(void)getSurroundForCitation:(Citation *)cit{
-    Location* loc = [cit.locations firstObject];
-    NSString* citationString = [sourceString substringWithRange:loc.range];
-    NSInteger top = loc.range.location+loc.range.length+100>sourceString.length? sourceString.length : loc.range.location+loc.range.length+100;
-    NSInteger bottom = loc.range.location<100? 0 : loc.range.location-100;
-    NSInteger addition = loc.range.location-bottom;
-    [loc setSurround:[sourceString substringWithRange:NSMakeRange(bottom, top-bottom)]];
-    for (NSInteger i=0; i<cit.authors.count; i++) {
-        NSString* author = [cit.authors objectAtIndex:i];
-        NSRange authInRange = [citationString rangeOfString:author];
-        NSValue* rngVal = [NSValue valueWithRange:NSMakeRange(authInRange.location+addition, authInRange.length)];
-        [loc.authorRangesInSurround addObject:rngVal];
-    }
-    
-    NSRange yearInRange = [citationString rangeOfString:[cit yearString]];
-    loc.yearRangeInSurround = NSMakeRange(yearInRange.location+addition, yearInRange.length);
-}
+//-(void)getSurroundForCitation:(Citation *)cit{
+//    Location* loc = [cit.locations firstObject];
+//    NSString* citationString = [sourceString substringWithRange:loc.range];
+//    NSInteger top = loc.range.location+loc.range.length+100>sourceString.length? sourceString.length : loc.range.location+loc.range.length+100;
+//    NSInteger bottom = loc.range.location<100? 0 : loc.range.location-100;
+//    NSInteger addition = loc.range.location-bottom;
+//    NSRange surroundRange = NSMakeRange(bottom, top-bottom);
+//    [loc setSurround:[sourceString substringWithRange:surroundRange]];
+//    [loc setSurroundRange:surroundRange];
+//    for (NSInteger i=0; i<cit.authors.count; i++) {
+//        NSString* author = [cit.authors objectAtIndex:i];
+//        NSRange authInRange = [citationString rangeOfString:author];
+//        NSValue* rngVal = [NSValue valueWithRange:NSMakeRange(authInRange.location+addition, authInRange.length)];
+//        [loc.authorRangesInSurround addObject:rngVal];
+//    }
+//    
+//    NSRange yearInRange = [citationString rangeOfString:[cit yearString]];
+//    loc.yearRangeInSurround = NSMakeRange(yearInRange.location+addition, yearInRange.length);
+//}
 
 -(BOOL)isDate:(NSString *)str{
     if ([self getDateWithMod:str]){
@@ -152,12 +139,12 @@
 
 -(Year*)getDateWithMod:(NSString *)in{
     Year *out;
-    in = [citAnalyser trimExtraneousGrammar:in];
+    in = [in stringByTrimmingCharactersInSet:[CitationIterator extraGrammar]];
     if (in.length<4 || in.length>5) return Nil;
     NSString* number = [in substringToIndex:4];
     for (int i=0;i<number.length;i++){
         unichar c = [number characterAtIndex:i];
-        if (![citAnalyser.numerals characterIsMember:c]) return Nil;
+        if (![[CitationIterator numeralChars] characterIsMember:c]) return Nil;
     }
     NSInteger date = [number integerValue];
     if (date<earliestDate || date>latestDate)return Nil;
@@ -165,7 +152,7 @@
     out = [[Year alloc]init:date];
     if (in.length==4) return out;
     unichar c = [in characterAtIndex:4];
-    if (![citAnalyser.lcases characterIsMember:c]) return Nil;
+    if (![[NSCharacterSet lowercaseLetterCharacterSet] characterIsMember:c]) return Nil;
     //NSLog(@"getDateWithMod: modifer %c for date %ld", c, (long)date);
     out.modifier = c;
     return out;
@@ -219,6 +206,7 @@
 }
 
 +(Year*)getYearFromString:(NSString *)str{
+    if (str.length==0) return nil;
     NSCharacterSet* numerals = [NSCharacterSet characterSetWithCharactersInString:@"0123456789"];
     Year *out = [[Year alloc]init];
     int i=0;

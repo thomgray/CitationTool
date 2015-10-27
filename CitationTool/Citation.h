@@ -14,9 +14,9 @@
 
 @class Reference;
 
-@interface Citation : NSObject
-
 #define ET_AL @"et al."
+
+@interface Citation : NSObject
 
 @property (readwrite) Year* year;
 @property (readwrite) NSMutableArray* authors;
@@ -42,9 +42,13 @@
 -(NSComparisonResult)compare:(id)cit;
 
 -(NSString*)yearString;
--(NSString*)authorsString;
+-(NSString*)authorsStringWithFinalDelimiter:(NSString*)delimit;
+
 -(NSString*)locString;
 -(NSString*)toString;
 
++(BOOL)isEtAl:(NSString*)str;
+
++(void)adjustLocationsForCitations:(NSArray<Citation*>*)citations atIndex:(NSInteger)i byOffset:(NSInteger)off inclusively:(BOOL)inc;
 
 @end

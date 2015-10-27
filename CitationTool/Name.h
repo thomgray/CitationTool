@@ -16,8 +16,14 @@
 
 -(instancetype) initFromString:(NSString*)str;
 -(BOOL)isEqualToName:(Name*)nm;
-
+-(NSComparisonResult)compare:(Name*)nm;
+-(NSString*)surnameWithInitials;
+-(BOOL)isEtAl;
 
 +(Name*)getNameFromString:(NSString*)in;
+
++(NSString*)alphabeticString:(NSString*)str;
++(BOOL)string:(NSString*)s1 isAlphabeticallyIdenticalTo:(NSString*)s2;
+
 
 @end

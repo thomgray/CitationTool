@@ -8,25 +8,23 @@
 
 #import <Foundation/Foundation.h>
 #import "Citation.h"
-#import "WordIterator.h"
-#import "CitationList.h"
 #import "Year.h"
 #import "Location.h"
-#import "CitationAnalyser.h"
+#import "CitationIterator.h"
 
-@class CitationList;
+@class Citation;
 @class CitationAnalyser;
 
 @interface Parser : NSObject{
     int nPar;
-    CitationAnalyser* citAnalyser;
+    //CitationIterator* citAnalyser;
     
     NSCharacterSet*numerals;
     NSCharacterSet*grammar;
     NSCharacterSet *lcases;
 }
 
-@property (readonly) CitationList *citations;
+@property (readonly) NSMutableArray<Citation*> *citations;
 @property (readwrite) NSInteger earliestDate;
 @property (readonly) NSInteger latestDate;
 @property (readonly) NSString* sourceString;
@@ -35,7 +33,7 @@
 
 -(BOOL)isDate:(NSString *)str;
 
--(CitationList *)getCitations;
+-(NSMutableArray<Citation*>*)getCitations;
 
 -(void)loadFile:(NSString*)path;
 
